@@ -2,7 +2,7 @@
 
 // This loads the API key safely so we can keep it out of the js file here (and git)
 $.get('/instagram.key', function(key) {
-    window.instagramCLientId = key;
+    window.instagramClientId = key;
 });
 
 // This function searches for photos on instagram with tags 
@@ -38,7 +38,7 @@ function searchInstagram(query, count, callback) {
 // want to eventually call other endpoints.
 function callInstagramAPI(endpoint, params, callback) {
   endpoint = 'https://api.instagram.com/v1' + endpoint;
-  params = $.extend({'client_id':window.instagramCLientId}, params);
+  params = $.extend({'client_id':window.instagramClientId}, params);
   $.ajax(endpoint, {'data':params, 'dataType':'jsonp'})
    .done( 
       // this block gets called if the API call works or fails!
