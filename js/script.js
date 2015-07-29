@@ -1,3 +1,5 @@
+// YOUR CODE GOES HERE
+
 $(document).ready(
   function() {
     $('#search-btn').click(
@@ -9,7 +11,7 @@ $(document).ready(
             console.log(results);
             $('#search-results').empty();
             $.each(
-              results.data,
+              results,
               function(index, result) {
                 $('#search-results').append('<img src="' + result.images.thumbnail.url + '">');
               }
@@ -20,3 +22,5 @@ $(document).ready(
     );
   }
 );
+
+

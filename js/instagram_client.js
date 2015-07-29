@@ -1,10 +1,5 @@
 // WRITE YOUR CODE IN script.js, NOT HERE
 
-// This loads the API key safely so we can keep it out of the js file here (and git)
-$.get('/instagram.key', function(key) {
-    window.instagramClientId = key;
-});
-
 // This function searches for photos on instagram with tags 
 // that match the search query.
 //
@@ -38,15 +33,15 @@ function searchInstagram(query, count, callback) {
 // want to eventually call other endpoints.
 function callInstagramAPI(endpoint, params, callback) {
   endpoint = 'https://api.instagram.com/v1' + endpoint;
-  params = $.extend({'client_id':window.instagramClientId}, params);
+  params = $.extend({'client_id':'405032b38f6b421f9c7823a249798f52'}, params);
   $.ajax(endpoint, {'data':params, 'dataType':'jsonp'})
    .done( 
       // this block gets called if the API call works or fails!
       function(response) {
         if (response.meta.error_message) {
           alert(response.meta.error_message);
-        } else if (response) {
-          callback(response);
+        } else if (response.data) {
+          callback(response.data);
         }
       }
     );
